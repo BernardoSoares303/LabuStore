@@ -20,7 +20,7 @@ namespace Trabalho_MS
         public TelaPrincipal()
         {
             InitializeComponent();
-            this.FormClosing += TelaPrincipal_FormClosing;
+            this.FormClosing += TelaPrincipal_FormClosing; // teste
         }
     }
 }
