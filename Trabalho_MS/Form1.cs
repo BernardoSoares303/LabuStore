@@ -1,4 +1,4 @@
-namespace Trabalho_MS
+﻿namespace Trabalho_MS
 {
     public partial class Form1 : Form
     {
@@ -6,5 +6,19 @@ namespace Trabalho_MS
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Click(object sender, EventArgs e)
+        {
+            TelaLogin telaLogin = new TelaLogin();
+            this.Hide();
+            telaLogin.Show();
+        }
+
+
     }
 }
