@@ -16,7 +16,7 @@ namespace Trabalho_MS
 {
     public partial class TelaLogin : Form
     {
-        static string conexao = "Server=127.0.0.1;Port=3307;Database=LabuStore;Uid=root;Pwd='' ;"; // trocar a porta de 3307 para 3306 no senai
+        static string conexao = "Server=127.0.0.1;Port=3306;Database=LabuStore;Uid=root;Pwd='' ;"; // trocar a porta de 3307 para 3306 no senai
 
         string usuario;
         string senhacrip;

@@ -49,7 +49,7 @@
             // 
             textSenha.BackColor = Color.MediumPurple;
             textSenha.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textSenha.Location = new Point(163, 212);
+            textSenha.Location = new Point(163, 224);
             textSenha.Name = "textSenha";
             textSenha.Size = new Size(485, 46);
             textSenha.TabIndex = 1;

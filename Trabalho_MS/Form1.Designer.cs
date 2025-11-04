@@ -36,7 +36,7 @@
             // 
             // logo
             // 
-            logo.Image = Properties.Resources.Logo;
+            logo.Image = LabuStore.Properties.Resources.LABUSTORE1;
             logo.Location = new Point(251, 27);
             logo.Name = "logo";
             logo.Size = new Size(300, 300);
