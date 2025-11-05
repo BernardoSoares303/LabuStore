@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabuStore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,23 @@ namespace Trabalho_MS
         {
             InitializeComponent();
             this.FormClosing += TelaPrincipal_FormClosing; // teste
+        }
+
+        private void Ver_Labubu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Editar_Labubu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cadastrar_Labubu_Click(object sender, EventArgs e)
+        {
+            Cadastrar_Labubus cadastrar_Labubus = new Cadastrar_Labubus();
+            this.Hide();
+            cadastrar_Labubus.Show();
         }
     }
 }
