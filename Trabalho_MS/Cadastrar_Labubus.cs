@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Trabalho_MS;
 
 namespace LabuStore
 {
@@ -53,12 +55,29 @@ namespace LabuStore
         }
         private void Cadastrar_Labubu_Click(object sender, EventArgs e)
         {
-
+            inserir_labubu(labubu);
+            
         }
 
         static void inserir_labubu(Labubu l1)
         {
+            using (MySqlConnection conn = new MySqlConnection(conexao))
+            {
+                conn.Open();
 
+                string query = @$"insert into labubus (nome_labubu, valor_labubu, quantidade_labubu, imagem_labubu) values (@nome_labubu, @valor_labubu, @quantidade_labubu, @imagem_labubu);";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@nome_labubu", l1.nome_labubu);
+                cmd.Parameters.AddWithValue("@valor_labubu", l1.valor_labubu);
+                cmd.Parameters.AddWithValue("@quantidade_labubu", l1.quantidade_labubu);
+                cmd.Parameters.AddWithValue("@imagem_labubu", l1.imagem_labubu);
+
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+            }
         }
 
 
