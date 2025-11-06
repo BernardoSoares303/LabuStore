@@ -38,6 +38,7 @@
             label4 = new Label();
             link_text = new TextBox();
             pictureBox1 = new PictureBox();
+            Cadastrar_Labubu = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -59,6 +60,7 @@
             nome_text.Name = "nome_text";
             nome_text.Size = new Size(212, 23);
             nome_text.TabIndex = 1;
+            nome_text.TextChanged += nome_text_TextChanged;
             // 
             // label2
             // 
@@ -78,6 +80,7 @@
             valor_text.Name = "valor_text";
             valor_text.Size = new Size(212, 23);
             valor_text.TabIndex = 3;
+            valor_text.TextChanged += valor_text_TextChanged;
             // 
             // label3
             // 
@@ -97,6 +100,7 @@
             quantidade_text.Name = "quantidade_text";
             quantidade_text.Size = new Size(212, 23);
             quantidade_text.TabIndex = 5;
+            quantidade_text.TextChanged += quantidade_text_TextChanged;
             // 
             // label4
             // 
@@ -127,12 +131,25 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
+            // Cadastrar_Labubu
+            // 
+            Cadastrar_Labubu.BackColor = Color.MediumPurple;
+            Cadastrar_Labubu.Font = new Font("Comic Sans MS", 16F, FontStyle.Bold);
+            Cadastrar_Labubu.Location = new Point(414, 314);
+            Cadastrar_Labubu.Name = "Cadastrar_Labubu";
+            Cadastrar_Labubu.Size = new Size(278, 50);
+            Cadastrar_Labubu.TabIndex = 9;
+            Cadastrar_Labubu.Text = "Cadastrar Labubu";
+            Cadastrar_Labubu.UseVisualStyleBackColor = false;
+            Cadastrar_Labubu.Click += Cadastrar_Labubu_Click;
+            // 
             // Cadastrar_Labubus
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(138, 85, 149);
             ClientSize = new Size(800, 450);
+            Controls.Add(Cadastrar_Labubu);
             Controls.Add(pictureBox1);
             Controls.Add(link_text);
             Controls.Add(label4);
@@ -163,5 +180,6 @@
         private Label label4;
         private TextBox link_text;
         private PictureBox pictureBox1;
+        private Button Cadastrar_Labubu;
     }
 }
