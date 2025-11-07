@@ -31,7 +31,9 @@ namespace Trabalho_MS
 
         private void Editar_Labubu_Click(object sender, EventArgs e)
         {
-
+            Editar_Labubu editar_Labubu = new Editar_Labubu(); 
+            this.Hide();
+            editar_Labubu.Show();
         }
 
         private void Cadastrar_Labubu_Click(object sender, EventArgs e)

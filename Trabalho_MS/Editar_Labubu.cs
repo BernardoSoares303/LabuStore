@@ -1,6 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using Mysqlx;
-using Org.BouncyCastle.Tls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,28 +12,24 @@ using Trabalho_MS;
 
 namespace LabuStore
 {
-    public partial class Cadastrar_Labubus : Form
+    public partial class Editar_Labubu : Form
     {
+        static string conexao = "Server=127.0.0.1;Port=3306;Database=LabuStore;Uid=root;Pwd='' ;";
         Labubu labubu = new Labubu();
-
-        static string conexao = "Server=127.0.0.1;Port=3306;Database=LabuStore;Uid=root;Pwd='' ;"; // trocar a porta de 3307 para 3306 no senai
-
-        public Cadastrar_Labubus()
+        int id;
+        public Editar_Labubu()
         {
             InitializeComponent();
         }
 
-        private void Cadastrar_Labubus_Load(object sender, EventArgs e)
+        private void Editar_Labubu_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void Cadastrar_Labubus_FormClosing(object sender, FormClosingEventArgs e)
+        private void id_text_TextChanged(object sender, EventArgs e)
         {
-            TelaPrincipal tela = new TelaPrincipal();
-            tela.Show();
+            id = int.Parse(id_text.Text);
         }
-
         private void nome_text_TextChanged(object sender, EventArgs e)
         {
             labubu.nome_labubu = nome_text.Text;
@@ -50,50 +44,54 @@ namespace LabuStore
         {
             labubu.quantidade_labubu = int.Parse(quantidade_text.Text);
         }
+
         private void link_text_TextChanged(object sender, EventArgs e)
         {
             pictureBox1.ImageLocation = link_text.Text;
             labubu.imagem_labubu = link_text.Text;
-
         }
-        private void Cadastrar_Labubu_Click(object sender, EventArgs e)
+
+        private void Labubu_Editar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                inserir_labubu(labubu);
-                MessageBox.Show("Labubu Cadastrado com sucesso!");
-                this.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("erro ao cadastrar labubu: "+ex.Message);
-            }
-            
-            
+            Editar_Labubus(id, labubu);
+            this.Close();
         }
 
-        static void inserir_labubu(Labubu l1)
+        static void Editar_Labubus(int id, Labubu l1)
         {
             using (MySqlConnection conn = new MySqlConnection(conexao))
             {
                 conn.Open();
-
-                string query = @$"insert into labubus (nome_labubu, valor_labubu, quantidade_labubu, imagem_labubu) values (@nome_labubu, @valor_labubu, @quantidade_labubu, @imagem_labubu);";
+                string query = @"UPDATE labubus SET nome_labubu = @nome_labubu, valor_labubu = @valor_labubu, quantidade_labubu = @quantidade_labubu, imagem_labubu = @imagem_labubu WHERE id_labubu = @id_labubu;";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
+                // Parâmetros
                 cmd.Parameters.AddWithValue("@nome_labubu", l1.nome_labubu);
                 cmd.Parameters.AddWithValue("@valor_labubu", l1.valor_labubu);
                 cmd.Parameters.AddWithValue("@quantidade_labubu", l1.quantidade_labubu);
                 cmd.Parameters.AddWithValue("@imagem_labubu", l1.imagem_labubu);
+                cmd.Parameters.AddWithValue("@id_labubu", id); // importante!
 
-                cmd.ExecuteNonQuery();
+                int linhasAfetadas = cmd.ExecuteNonQuery(); // retorna quantas linhas foram alteradas
+
+                if (linhasAfetadas > 0)
+                {
+                    MessageBox.Show("Labubu atualizado com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum registro encontrado com esse ID.");
+                }
+
                 conn.Close();
-
             }
         }
 
-
+        private void Editar_Labubu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TelaPrincipal tela = new TelaPrincipal();
+            tela.Show();
+        }
     }
-
 }
