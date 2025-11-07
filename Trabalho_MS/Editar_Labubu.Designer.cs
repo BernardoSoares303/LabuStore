@@ -41,6 +41,7 @@
             label1 = new Label();
             label5 = new Label();
             id_text = new TextBox();
+            excluir = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             // 
             Labubu_Editar.BackColor = Color.MediumPurple;
             Labubu_Editar.Font = new Font("Comic Sans MS", 16F, FontStyle.Bold);
-            Labubu_Editar.Location = new Point(433, 377);
+            Labubu_Editar.Location = new Point(431, 309);
             Labubu_Editar.Name = "Labubu_Editar";
             Labubu_Editar.Size = new Size(278, 50);
             Labubu_Editar.TabIndex = 19;
@@ -165,12 +166,25 @@
             id_text.TabIndex = 21;
             id_text.TextChanged += id_text_TextChanged;
             // 
+            // excluir
+            // 
+            excluir.BackColor = Color.MediumPurple;
+            excluir.Font = new Font("Comic Sans MS", 16F, FontStyle.Bold);
+            excluir.Location = new Point(431, 365);
+            excluir.Name = "excluir";
+            excluir.Size = new Size(278, 50);
+            excluir.TabIndex = 22;
+            excluir.Text = "Excluir Labubu";
+            excluir.UseVisualStyleBackColor = false;
+            excluir.Click += excluir_Click;
+            // 
             // Editar_Labubu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(138, 85, 149);
             ClientSize = new Size(800, 450);
+            Controls.Add(excluir);
             Controls.Add(id_text);
             Controls.Add(label5);
             Controls.Add(Labubu_Editar);
@@ -207,5 +221,6 @@
         private Label label1;
         private Label label5;
         private TextBox id_text;
+        private Button excluir;
     }
 }

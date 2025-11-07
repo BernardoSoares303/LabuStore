@@ -57,6 +57,37 @@ namespace LabuStore
             this.Close();
         }
 
+        private void excluir_Click(object sender, EventArgs e)
+        {
+
+            DialogResult resultado = MessageBox.Show("Tem certeza que deseja excluir este registro?","Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+
+                    excluir_labubu(id);
+
+                    MessageBox.Show("Registro excluído com sucesso!");
+                    
+                    this.Close();
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("erro ao cadastrar labubu: " + ex.Message);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Operação cancelada.");
+            }
+         
+
+        }
+
         static void Editar_Labubus(int id, Labubu l1)
         {
             using (MySqlConnection conn = new MySqlConnection(conexao))
@@ -88,10 +119,26 @@ namespace LabuStore
             }
         }
 
+        static void excluir_labubu(int id)
+        {
+            using (MySqlConnection coon = new MySqlConnection(conexao))
+            {
+                coon.Open();
+
+                string query = @$"DELETE * from labubus where id_labubu = {id};";
+
+                MySqlCommand cmd = new MySqlCommand(query, coon);
+
+                cmd.ExecuteNonQuery();
+                coon.Close();
+            }
+        }
+
         private void Editar_Labubu_FormClosing(object sender, FormClosingEventArgs e)
         {
             TelaPrincipal tela = new TelaPrincipal();
             tela.Show();
         }
+
     }
 }
