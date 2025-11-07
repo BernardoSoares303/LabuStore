@@ -125,9 +125,11 @@ namespace LabuStore
             {
                 coon.Open();
 
-                string query = @$"DELETE * from labubus where id_labubu = {id};";
+                string query = @$"DELETE FROM labubus WHERE id_labubu = @id;";
 
                 MySqlCommand cmd = new MySqlCommand(query, coon);
+
+                cmd.Parameters.AddWithValue("@id", id);
 
                 cmd.ExecuteNonQuery();
                 coon.Close();
